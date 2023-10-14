@@ -3,14 +3,22 @@ package com.example.wherehouse.entity;
 import com.example.wherehouse.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Data
-@Entity
+@Entity(name = "user_org")
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLogin {
+@Builder
+public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
@@ -19,7 +27,9 @@ public class UserLogin {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-/*
+    @OneToMany
+    private List<Organization> organizations;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -54,6 +64,5 @@ public class UserLogin {
     public boolean isEnabled() {
         return false;
     }
- */
 }
 
