@@ -1,9 +1,6 @@
 package com.example.wherehouse.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -19,7 +16,10 @@ public class WareHouse {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
+    @OneToMany(mappedBy = "warehouse")
     private List<Product> products;
 
 }
