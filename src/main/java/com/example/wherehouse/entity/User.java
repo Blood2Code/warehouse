@@ -27,7 +27,7 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToMany
+    @OneToMany(mappedBy = "owner_id")
     private List<Organization> organizations;
 
     @Override
