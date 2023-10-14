@@ -1,8 +1,6 @@
 package com.example.wherehouse.dto;
 
 import com.example.wherehouse.enums.Action;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
