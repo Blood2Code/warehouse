@@ -17,7 +17,8 @@ public class Organization {
     @NonNull
     private String name;
     @ManyToOne
-    private User userLogin;
+    @JoinColumn(name = "owner_id")
+    private User owner;
     @OneToMany
     private List<WareHouse> whereHouse;
 
