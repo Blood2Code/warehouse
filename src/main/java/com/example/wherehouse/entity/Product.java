@@ -21,4 +21,7 @@ public class Product {
     private String measurement;
     @Enumerated(EnumType.STRING)
     private Action action;
+    @ManyToOne
+    @JoinColumn(name = "warehouse_id")
+    private WareHouse wareHouse;
 }
